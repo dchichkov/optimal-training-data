@@ -29,7 +29,7 @@ import random, numpy, pylab as pl, collections, multiprocessing, time, json, gc
 # GA population size. Note, set to small value (5) if you'd like to see 
 # algorithm do. GA would first evaluate fitness of the population, which 
 # takes population_size train/valid runs of the MNIST. GThe default is 200.
-population_size = 5
+population_size = 200
 
 # GA hall_of_fame_size. 
 hall_of_fame_size = 20

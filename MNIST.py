@@ -22,7 +22,7 @@ see the increase of test accuracy during evolution of the indexes.
 '''
 
 from __future__ import print_function
-import os
+import os, gc
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 import tensorflow as tf
@@ -113,8 +113,12 @@ def f(indexes, is_test = False):
     # This is used during evaluation only
     if is_test:
       score = model.evaluate(x_test, y_test, verbose=0, batch_size=batch_size)
+      keras.backend.clear_session()
+      gc.collect()
       return score[1]
 
+    keras.backend.clear_session()
+    gc.collect()
     return (validation_acccuracy,)
 
 
